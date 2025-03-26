@@ -1,0 +1,338 @@
+:root {
+  --primary-color: #4a6ee0;
+  --primary-hover: #3a5ed0;
+  --secondary-color: #f8f9fa;
+  --text-color: #343a40;
+  --border-color: #dee2e6;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f5f7fa;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
+
+/* Form Styles */
+.todo-form {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Todo List Section */
+.todo-list-section {
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter select {
+  width: auto;
+  padding: 0.5rem;
+}
+
+/* Todo Item */
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  animation: fadeIn 0.3s;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-checkbox {
+  margin-right: 1rem;
+  margin-top: 0.3rem;
+}
+
+.todo-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-content {
+  flex-grow: 1;
+}
+
+.todo-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.todo-description {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.todo-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-actions button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #6c757d;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.edit-btn:hover {
+  color: var(--primary-color);
+}
+
+.delete-btn:hover {
+  color: var(--danger-color);
+}
+
+.completed .todo-title {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6c757d;
+}
+
+/* Modal styles */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: slideIn 0.3s;
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Error message */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #721c24;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+/* Checkbox label */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .todo-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .filter {
+    width: 100%;
+  }
+  
+  .filter select {
+    width: 100%;
+  }
+  
+  .todo-item {
+    flex-direction: column;
+  }
+  
+  .todo-checkbox {
+    margin-bottom: 1rem;
+  }
+  
+  .todo-actions {
+    margin-top: 1rem;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  
+  .modal-content {
+    margin: 20% auto;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .todo-form,
+  .todo-list-section {
+    padding: 1rem;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+}

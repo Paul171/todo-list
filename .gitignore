@@ -1,0 +1,6 @@
+.vercel
+node_modules
+.env
+.env.example
+yarn.lock
+package-lock.json
