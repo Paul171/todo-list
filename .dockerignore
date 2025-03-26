@@ -1,0 +1,36 @@
+# Node.js dependencies and build artifacts
+node_modules
+npm-debug.log
+client/node_modules
+client/dist
+client/build
+
+# Version control
+.git
+.gitignore
+
+# Environment variables
+.env
+.env.*
+client/.env
+client/.env.*
+!client/.env.example
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Log files
+logs
+*.log
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db

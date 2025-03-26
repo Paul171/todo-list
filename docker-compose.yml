@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Todo List Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=todolist
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    networks:
+      - todo-network
+
+  # MySQL Database  
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=todolist
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - todo-network
+    restart: unless-stopped
+
+networks:
+  todo-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
