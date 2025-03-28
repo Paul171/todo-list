@@ -10,12 +10,13 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DB_HOST=mysql
+      - MYSQL_PUBLIC_URL=mysql://root:UZXvQgetqzklDuinMGdWkpHiOHUoZESF@gondola.proxy.rlwy.net:12442/railway
+      - DB_HOST=gondola.proxy.rlwy.net
+      - DB_PORT=12442
       - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=todolist
-    depends_on:
-      - mysql
+      - DB_PASSWORD=UZXvQgetqzklDuinMGdWkpHiOHUoZESF
+      - DB_NAME=railway
+      - DB_SSL=true
     restart: unless-stopped
     networks:
       - todo-network

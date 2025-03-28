@@ -35,10 +35,16 @@ EXPOSE 3000
 # Set environment variables with defaults
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV DB_HOST=localhost
+ENV MYSQL_PUBLIC_URL=mysql://root:UZXvQgetqzklDuinMGdWkpHiOHUoZESF@gondola.proxy.rlwy.net:12442/railway
+ENV DB_HOST=gondola.proxy.rlwy.net
+ENV DB_PORT=12442
 ENV DB_USER=root
-ENV DB_PASSWORD=password
-ENV DB_NAME=todolist
+ENV DB_PASSWORD=UZXvQgetqzklDuinMGdWkpHiOHUoZESF
+ENV DB_NAME=railway
+ENV DB_SSL=true
+
+# Add health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 
 # Start the server
 CMD ["node", "src/server.js"]
